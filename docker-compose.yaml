@@ -11,7 +11,7 @@ volumes:
 networks:
   mynetwork.com:
     external:
-      name: net_byfn
+      name: fabric-starter_default
 
 services:
 
@@ -50,7 +50,7 @@ services:
     volumes:
       - ./examples/net1/config.json:/opt/explorer/app/platform/fabric/config.json
       - ./examples/net1/connection-profile:/opt/explorer/app/platform/fabric/connection-profile
-      - ./examples/net1/crypto:/tmp/crypto
+      - /Users/vladimirpopov/Blockchain/HLF/fabric-starter/crypto-config:/tmp/crypto
       - walletstore:/opt/wallet
     command: sh -c "node /opt/explorer/main.js && tail -f /dev/null"
     ports:
@@ -68,7 +68,7 @@ services:
       - ./app/platform/fabric/artifacts/operations/balance-transfer/prometheus.yml:/etc/prometheus/prometheus.yml
       - prometheus-storage:/prometheus
     ports:
-      - '9090:9090'
+      - '9091:9090'
     networks:
       - mynetwork.com
 
